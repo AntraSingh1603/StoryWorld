@@ -5,7 +5,7 @@
 // ============================================================
 
 const API = (() => {
-  const BASE = 'http://localhost:5000/api';
+  const BASE = 'https://storyworld-backend-zkc8.onrender.com/api';
 
   // Standard headers for every request
   const headers = () => ({
