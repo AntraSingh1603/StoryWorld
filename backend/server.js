@@ -12,6 +12,7 @@
 //   4. API available at http://localhost:5000/api
 // ============================================================
 
+
 const express  = require('express');
 const mongoose = require('mongoose');
 const cors     = require('cors');
@@ -22,15 +23,7 @@ const app = express();
 
 // ── Middleware ────────────────────────────────────────────
 // Allow the frontend (opened directly from disk or Live Server) to call the API
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://127.0.0.1:5500',
-    'http://localhost:5500',
-    'null'           // allows file:// origin (opening HTML directly in browser)
-  ],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());                                      // parse JSON bodies
 app.use(express.urlencoded({ extended: true }));              // parse form bodies
 app.use(express.static(path.join(__dirname, '../frontend'))); // serve frontend files
