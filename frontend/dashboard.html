@@ -87,7 +87,9 @@
         const res = await API.get('/stories?featured=true');
         document.getElementById('statFeatured').textContent = res.stories.length;
         document.getElementById('statGenre').textContent = '🧙 Fantasy';
-        document.getElementById('statTotal').textContent = res.total;
+        //document.getElementById('statTotal').textContent = res.total;
+        let visitedStories = JSON.parse(localStorage.getItem("visitedStoriesList")) || [];
+        document.getElementById('statTotal').textContent = visitedStories.length;
 
         document.getElementById('recommendedGrid').innerHTML = res.stories.map(s => `
           <div class="story-card animate-card" onclick="window.location.href='reader.html?id=${s._id}'" style="cursor:pointer">

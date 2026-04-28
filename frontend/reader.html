@@ -131,6 +131,14 @@
       try {
         const res = await API.get(`/stories/${storyId}`);
         story = res.story;
+        // ✅ Track visited stories (NO duplicate count)
+        let visitedStories = JSON.parse(localStorage.getItem("visitedStoriesList")) || [];
+
+        if (!visitedStories.includes(storyId)) {
+          visitedStories.push(storyId);
+          localStorage.setItem("visitedStoriesList", JSON.stringify(visitedStories));
+        }
+        // End here .... //
         document.title = `${story.title} — StoryLand`;
         document.getElementById('readerTitle').textContent = story.title;
 
