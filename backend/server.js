@@ -47,7 +47,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Fallback: serve the frontend for any non-API route
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/pages/index.html'));
 });
 
@@ -199,7 +199,80 @@ async function seedDatabase() {
         { pageNumber: 4, text: 'Cumulus looked down at the wilting flowers and the sad little girl. His heart felt full. He took a big, deep breath — and RAINED with everything he had!', backgroundEmoji: '🌧️', characters: ['☁️', '🌧️'] },
         { pageNumber: 5, text: 'The flowers sprang up. The rivers danced. A double rainbow appeared! Cumulus laughed — the tickling wasn\'t so bad after all, when he could see how much joy it brought. THE END ☁️', backgroundEmoji: '🌈', characters: ['☁️', '🌈', '👧', '🌺'] }
       ]
+    },
+    // --------Story 7 -------------------
+    {
+      title: "The Clever Fox",
+      description: "A fox uses its brain to escape danger.",
+      ageGroup: "4-7",
+      readingLevel: "beginner",
+      genre: "adventure",
+      coverEmoji: "🦊",
+      coverColor: "#ff9f43",
+      moral: "Intelligence is stronger than strength.",
+      isFeatured: false,
+      views: 0,
+      likes: 0,
+      pages: [
+        { pageNumber: 1, text: "Once a fox was trapped...", backgroundEmoji: "🌲", characters: ["🦊"] },
+        { pageNumber: 2, text: "It thought carefully and escaped.", backgroundEmoji: "🌄", characters: ["🦊"] }
+      ]
+    },
+
+    {
+      title: "The Magic Tree",
+      description: "A tree that grants wishes.",
+      ageGroup: "6-9",
+      readingLevel: "intermediate",
+      genre: "fantasy",
+      coverEmoji: "🌳",
+      coverColor: "#2ecc71",
+      moral: "Use power wisely.",
+      isFeatured: true,
+      views: 0,
+      likes: 0,
+      pages: [
+        { pageNumber: 1, text: "There was a magical tree...", backgroundEmoji: "✨", characters: ["🌳"] },
+        { pageNumber: 2, text: "It granted wishes but taught lessons.", backgroundEmoji: "🌟", characters: ["🌳"] }
+      ]
+    },
+
+    {
+      title: "Little Scientist",
+      description: "A kid explores science experiments.",
+      ageGroup: "7-10",
+      readingLevel: "advanced",
+      genre: "science",
+      coverEmoji: "🔬",
+      coverColor: "#3498db",
+      moral: "Curiosity leads to discovery.",
+      isFeatured: false,
+      views: 0,
+      likes: 0,
+      pages: [
+        { pageNumber: 1, text: "A child loved experiments...", backgroundEmoji: "⚗️", characters: ["🧒"] },
+        { pageNumber: 2, text: "Every failure was a lesson.", backgroundEmoji: "💡", characters: ["🧒"] }
+      ]
+    },
+
+    {
+      title: "The River's Secret",
+      description: "A river teaches kindness.",
+      ageGroup: "5-8",
+      readingLevel: "beginner",
+      genre: "nature",
+      coverEmoji: "🌊",
+      coverColor: "#00cec9",
+      moral: "Kindness flows back.",
+      isFeatured: false,
+      views: 0,
+      likes: 0,
+      pages: [
+        { pageNumber: 1, text: "A river flowed quietly...", backgroundEmoji: "🌊", characters: ["🐟"] },
+        { pageNumber: 2, text: "It helped everyone around.", backgroundEmoji: "🌿", characters: ["🐟"] }
+      ]
     }
+  
   ];
 
   await Story.insertMany(stories);
