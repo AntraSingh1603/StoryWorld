@@ -133,7 +133,7 @@
       if (level !== 'all') query += `readingLevel=${level}&`;
       if (genre !== 'all') query += `genre=${genre}&`;
       if (search) query += `search=${encodeURIComponent(search)}&`;
-      if (sort !== 'featured') query += `sort=${sort}&`;
+      if (sort) query += `sort=${sort}&`;
 
       const grid = document.getElementById('storiesGrid');
       grid.innerHTML = '<div class="story-card-skeleton"></div>'.repeat(6);
