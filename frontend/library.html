@@ -122,6 +122,7 @@
 
     async function applyFilters() {
       SoundEngine.play('click');
+      const sort = document.getElementById('filterSort').value;
       const search = document.getElementById('searchInput').value.trim();
       const age = document.getElementById('filterAge').value;
       const level = document.getElementById('filterLevel').value;
@@ -132,6 +133,7 @@
       if (level !== 'all') query += `readingLevel=${level}&`;
       if (genre !== 'all') query += `genre=${genre}&`;
       if (search) query += `search=${encodeURIComponent(search)}&`;
+      if (sort !== 'featured') query += `sort=${sort}&`;
 
       const grid = document.getElementById('storiesGrid');
       grid.innerHTML = '<div class="story-card-skeleton"></div>'.repeat(6);
