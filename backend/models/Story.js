@@ -19,7 +19,7 @@ const storySchema = new mongoose.Schema({
   description:  { type: String, required: true },
 
   // Filter fields — used by the library page
-  ageGroup:     { type: String, enum: ['3-5', '4-7', '6-9', '7-10', 'all'], required: true },
+  ageGroup:     { type: String, enum: ['3-5', '4-7', '5-8', '6-9', '7-10', 'all'], required: true },
   readingLevel: { type: String, enum: ['beginner', 'intermediate', 'advanced'], required: true },
   genre:        { type: String, enum: ['fantasy', 'adventure', 'nature', 'science', 'folklore', 'mystery'], required: true },
 
