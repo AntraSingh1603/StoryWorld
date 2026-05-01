@@ -13,6 +13,12 @@ const userSchema = new mongoose.Schema({
   email:    { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true }, // plain text (simple auth)
 
+  // ── Email Verification ────────────────────────────────
+  // isVerified: becomes true only after the user clicks the email link
+  // verificationToken: random string sent in the email link; cleared after use
+  isVerified:        { type: Boolean, default: false },
+  verificationToken: { type: String,  default: null  },
+
   // Optional child profile attached to this account
   child: {
     name:   { type: String, default: '' },

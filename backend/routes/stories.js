@@ -16,7 +16,7 @@ const Story   = require('../models/Story');
 // ----------------------------------------------------------
 router.get('/', async (req, res) => {
   try {
-    const { ageGroup, readingLevel, genre, featured, search, sort } = req.query;
+    const { ageGroup, readingLevel, genre, featured, search } = req.query;
 
     // Build a dynamic filter object
     const filter = {};
@@ -35,21 +35,11 @@ router.get('/', async (req, res) => {
     }
 
     // Return all matching stories; exclude page content (heavy) for the list view
-      let sortOption = { isFeatured: -1 };
+    const stories = await Story.find(filter)
+      .select('-pages')
+      .sort({ isFeatured: -1, createdAt: -1 });
 
-      if (sort === 'newest') {
-        sortOption = { createdAt: -1 };
-      } else if (sort === 'popular') {
-        sortOption = { views: -1 };
-      } else if (sort === 'liked') {
-        sortOption = { likes: -1 };
-      }
-
-      const stories = await Story.find(filter)
-        .select('-pages')
-        .sort(sortOption);
-
-res.json({ success: true, stories, total: stories.length });
+    res.json({ success: true, stories, total: stories.length });
 
   } catch (err) {
     console.error('Fetch stories error:', err.message);
