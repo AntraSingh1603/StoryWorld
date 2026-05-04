@@ -25,8 +25,13 @@ const userSchema = new mongoose.Schema({
     age:    { type: Number, default: 0 },
     avatar: { type: String, default: '🧒' }
   },
+    visitedStories: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Story' }
+  ],
+
 
   createdAt: { type: Date, default: Date.now }
+
 });
 
 module.exports = mongoose.model('User', userSchema);
